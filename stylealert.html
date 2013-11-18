@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>jsConfirmSyle</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script type="text/javascript" src="jsConfirmStyle.js"></script>
+<script type="text/javascript">
+ 
+function confirmation() {
+    var answer = confirm("Wanna visit google?")
+    if (answer){
+        window.location = "http://www.google.com/";
+    }
+}
+ 
+</script>
+<style type="text/css">
+body {
+    background-color: white;
+    font-family: sans-serif;
+}
+#jsconfirm {
+    border-color: #c0c0c0;
+    border-width: 2px 4px 4px 2px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -1000px;
+    z-index: 100;
+}
+ 
+#jsconfirm table {
+    background-color: #fff;
+    border: 2px groove #c0c0c0;
+    height: 150px;
+    width: 300px;
+}
+ 
+#jsconfirmtitle {
+    background-color: #B0B0B0;
+    font-weight: bold;
+    height: 20px;
+    text-align: center;
+}
+ 
+#jsconfirmbuttons {
+    height: 50px;
+    text-align: center;
+}
+ 
+#jsconfirmbuttons input {
+    background-color: #E9E9CF;
+    color: #000000;
+    font-weight: bold;
+    width: 125px;
+    height: 33px;
+    padding-left: 20px;
+}
+ 
+#jsconfirmleft{
+    background-image: url(left.png);
+}
+ 
+#jsconfirmright{
+    background-image: url(right.png);
+}
+</style>
+</head>
+<body>
+<p><br />
+<a href="#"
+    onclick="javascript:showConfirm('Please confirm','Are you really really sure to visit google?','Yes','http://www.google.com','No','#')">JsConfirmStyled</a></p>
+<p><a href="#" onclick="confirmation()">standard</a></p>
+ 
+</body>
+</html>

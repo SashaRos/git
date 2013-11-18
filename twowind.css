@@ -1,0 +1,43 @@
+#sidebar {
+position: absolute;
+left: 36px;
+top: 86px;
+width: 186px;
+font-size: .8em;
+}
+
+#navlist {
+margin: 0; /*removes indent IE and Opera*/
+padding: 0; /*removes indent Mozilla and NN7*/
+list-style-type: none; /*turns off display of bullet*/
+}
+
+#navlist a, #navlist a:visited {
+display: block;
+padding: 2px 2px 2px 24px;
+border: 1px solid;
+border-color: #ddd #000 #000 #ddd;
+background-color: #999999;
+background-image:  url(assets/l1_down.jpg);
+background-repeat: no-repeat;
+background-position: 0% 50%;
+color: #EEE;
+text-decoration: none;
+}
+
+#navlist a:hover {
+background-color: #9F6F9F;
+background-image:  url(assets/l1_over.jpg);
+
+color: #2D1E2D;
+}
+
+#sidebar #navlist .uberlink {
+background-color: #9F6F9F;
+background-image:  url(assets/l1_over.jpg);
+background-repeat: no-repeat;
+background-position: 0% 50%;
+color: #333 !important;
+font-weight: bold;
+cursor: default;
+}

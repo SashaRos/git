@@ -1,0 +1,158 @@
+                      INSTRUCTIONS for PHP menu
+                      
+ © Agner Fog 2004
+ GNU General Public License www.gnu.org/copyleft/gpl.html
+
+Features
+========
+This is a software system for a hierarchical menu on a web site. It has
+an expandable menu on the top of every page, and links to 'Previous' and
+'Next' at the bottom.
+
+The menu is tree structured and may be branched to an unlimited depth.
+
+All branches in the tree structure can be expanded and collapsed by the user.
+
+The software is coded in PHP and executed on the server side. This makes
+sure that it works in all browsers. A disadvantage of executing the code
+on the server side is a longer response time when expanding or collapsing
+a branch.
+
+The system does not use frames in order to avoid the usability problems
+associated with frames.
+
+The system automatically replaces the menu by a link to a separate menu page
+when visited by a search engine. This assures an optimal effect of search
+engines such as AltaVista and Google.
+
+The layout and colors can easily be controlled by means of a style sheet.
+An extra style sheet for print media makes it possible to make printouts
+in black and white without the menu.
+
+
+Installation
+============
+First, you have to decide the directory structure. Let's assume that your
+domain name is www.yourdomain.com and that you want the start page of the
+menu system on www.yourdomain.com/BASEDIR/.
+
+Unpack the file phpmenu.zip into the directory BASEDIR. Make sure you 
+preserve the directory structure when unzipping. This will put the 
+necessary files in directory BASEDIR and BASEDIR/menu. Note, that there 
+are two files named index.php, one in each of the directories BASEDIR and
+BASEDIR/menu. These two files are different and must be kept separate.
+
+Now, you have to edit all the .php files in the two directories as well as
+the file menu.txt in the menu directory to change ALL occurrences of /BASEDIR/
+to the actual name of your base directory. If you want the start page for the
+menu system to be the root of your domain, then just replace /BASEDIR/ by a
+single slash (/). Otherwise use the absolute virtual path, beginning and
+ending with a slash. You have to use the absolute path (i.e. begin with a slash)
+if you have your pages in more than one directory. Even if you have all your
+pages in the same directory, it is still recommended to use absolute paths
+because you may want to add more directories in the future.
+
+Now test the system in your web browser. You should see a menu system with
+seven test pages.
+
+When the test menu works, you can modify it to suit your purpose. Each
+HTML page should have a name ending in .php. Use the test pages as templates
+to get the right PHP codes at the top and bottom, then change the title,
+heading and text. If you are using an HTML editor, then make sure it doesn't
+put <p> .. </p> or any other HTML tags around the PHP include sections.
+
+Modify the file head.php in the menu directory to put in whatever you want
+to the left and right of the menu instead of the texts "(Left side decoration
+here)" and "(Right side decoration here)". If you want no extra text, logos
+or links here, just write  &nbsp;  in place.
+
+Modify the file menu.txt in the menu directory to specify your menu structure.
+Make one line for each entry in the menu. A typical line may look like this:
+
+..page 1.2|/BASEDIR/page12.php|#0|+
+
+The line contains the following elements:
+-----------------------------------------
+1. A number of dots to indicate the depth in the tree structure.
+If page 1.2 is in a submenu under page 1, then page 1.2 should have one
+more dot than page 1. The number of dots at the beginning of any line
+should not exceed the number of dots at the preceding line plus one.
+
+2. The title of the page.
+This is the link text to show in the menu
+
+3. The link.
+This is the link as you would write it in an <A href="..."> tag. Don't use
+relative addresses (without slash) unless you have all your pages in the
+same directory. Even if this is the case, it is still recommended to use
+absolute addresses (beginning with a slash). If the link goes to a page on
+a different domain, precede it with http://. You may omit the link for
+branch headings that have no associated page.
+
+4. Any bookmark.
+The bookmark #0 will point to the beginning of the page text, just after
+the menu.
+
+5. A + sign or target.
+The + sign indicates that the link goes to another page within the same menu
+system. Remove the + sign if the link goes to a page outside the menu system.
+If you are using frames, you may put a target here. It is not recommended
+to use frames, though.
+
+Item 2, 3, 4, and 5 are separated by vertical bars (|).
+
+You may edit menu.txt again any time you are adding new pages or changing
+the menu structure.
+
+
+You may edit the stylesheet file screen.css to change colors, fonts, margins,
+etc.
+
+The extra stylesheet file print.css controls how the pages will look when
+printed out on paper. You probably want the printout to be black on white.
+The line:
+.menu{display:none}
+removes the menus completely from the printout.
+
+The bar at the bottom of each page with links to Previous and Next is made
+in tail.php. If you don't want this bar, remove everything except the first
+line (containing "</div>") from tail.php. You may change what Previous
+and Next point to by manipulating the php variables $previous and $next.
+
+
+Technical notes
+===============
+The ?e= parameter that you get in the URL when clicking on a menu item is
+a parameter that indicates which branches to expand in the menu tree.
+This parameter is not needed when linking from somewhere else to a page
+in the menu system.
+
+The #0 bookmark takes you to the beginning of the text just after the menu.
+The #i bookmark, or no bookmark at all, takes you to the top of the page.
+
+The file index.php in the menu directory gives an expanded menu without any
+?e= parameters. This is intended for searh engines such as AltaVista, Google,
+etc. The robots of these search engines should not see the ?e= parameters
+because they would either ignore such links, or store multiple instances of
+the same page with different ?e= parameters. In order to avoid this problem,
+the system replaces the menu with a link to the menu index page when seen
+by a search robot. Unfortunately, there is no standard for identifying search
+robots. The code in menu.php simply uses a list of the names of known search
+robots. You may edit this list.
+
+
+File list
+=========
+/BASEDIR/read-me.txt       This file
+/BASEDIR/index.php         Start page
+/BASEDIR/page11.php, etc.  Test pages. Replace by your own pages
+/BASEDIR/screen.css        Style sheet defining colors etc.
+/BASEDIR/print.css         Style sheet defining printout
+/BASEDIR/menu/*.gif        Images for drawing menu tree
+/BASEDIR/menu/menu.txt     Defines tree structure
+/BASEDIR/menu/menu.php     Code to generate menu tree
+/BASEDIR/menu/head.php     Layout for top menu
+/BASEDIR/menu/tail.php     Layout for bottom menu
+/BASEDIR/menu/index.php    Simple menu for search engines
+
+
