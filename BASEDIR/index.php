@@ -6,6 +6,7 @@
 <BODY>
 <?PHP
   include $_SERVER['DOCUMENT_ROOT'] . '/BASEDIR/menu/head.php'; // Include menu code
+print "kk";
 ?>
 <h1>Main page</h1>
 
