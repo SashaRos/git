@@ -15,8 +15,8 @@
         		selector: '.context-menu-one', 
         		build: function($trigger, e) {
             	return {callback: function(key, options) {
-                    var m = "clicked: " + key;
-                    window.console && console.log(m) || alert(m); 
+                    //var m = "https://www.google.co.il/?gfe_rd=cr&ei=pn08U_HLA8Le_AaeloDwCw#q=" + key;
+                    top.frames['New'].location.href = 'm'; 
                 },
                 items: {
                     "edit": {name: "Edit", icon: "edit"},
@@ -36,9 +36,12 @@
  
 </head>
 <body>
+			<iframe src="http://www.braude.ac.il/"  name="New" height="90%" width="90%"> </iframe>
 			<div class="context-menu-one">
     			<strong>right click me</strong>
 			</div>
+			<br>
+			
     	
 
 </body>
